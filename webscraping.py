@@ -64,5 +64,9 @@ countries_score_df = pd.read_html(str(countries_score_table))
 
 countries_score_df = countries_score_df[0]
 countries_score_df = countries_score_df.rename(columns={"Country or region" : "Country"})
-print(countries_score_df)
+# print(countries_score_df)
+
+merged_df = pd.merge(countries_score_df, countries_continent_category_df, how='inner', on='Country')
+merged_df.to_csv('final_result.csv')
+
 
